@@ -1,0 +1,34 @@
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+ 
+int k_digit(int n, int k);
+ 
+int main(int argc, char* argv[])
+{
+    setlocale(LC_ALL, "rus");
+    cout << "Введите число: ";
+    unsigned long number, level;
+    cin >> number;
+    cout << "Сколько разрядов показать? ";
+    cin >> level;
+    cout << k_digit(number, level) << endl;
+    system("pause");
+    return 0;
+}
+ 
+int k_digit(int n, int k)
+{
+    int save_n = n,
+        counter_digits = 0;
+ 
+    while (save_n)
+    {
+        save_n /= 10;
+        counter_digits++;
+    }
+ 
+    for (int counter = 0; counter < (counter_digits - k); counter++ )
+        n /= 10;
+    return n;
+}
